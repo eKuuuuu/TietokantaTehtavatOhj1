@@ -149,3 +149,19 @@ SELECT country.name, count(*) FROM airport, country WHERE airport.iso_country = 
 SELECT country.name FROM airport, country WHERE airport.iso_country = country.iso_country GROUP BY country.iso_country HAVING count(*) > 1000;
 ![img_32.png](img_32.png)
 
+### Tehtävä 7
+SELECT name FROM airport WHERE elevation_ft IN (SELECT max(elevation_ft) FROM airport);
+![img_33.png](img_33.png)
+
+### Tehtävä 8
+SELECT name FROM country WHERE iso_country in (SELECT iso_country FROM airport WHERE elevation_ft IN(SELECT max(elevation_ft)FROM airport));
+![img_34.png](img_34.png)
+
+### Tehtävä 9
+SELECT count(*) FROM game, goal_reached WHERE id = game_id and SCREEN_name = "Vesa" GROUP BY screen_name;
+![img_35.png](img_35.png)
+
+### Tehtävä 10
+SELECT name FROM airport WHERE latitude_deg in(SELECT min(latitude_deg) FROM airport);
+![img_36.png](img_36.png)
+
