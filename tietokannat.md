@@ -101,3 +101,51 @@ SELECT airport.name, screen_name FROM airport left JOIN game on ident = location
 SELECT name, screen_name FROM goal LEFT JOIN goal_reached ON goal.id = goal_id LEFT JOIN game ON game.id = game_id;
 ![img_21.png](img_21.png)
 
+### Sisäkysely harjoitukset
+
+### Tehtävä 1
+SELECT name FROM country WHERE iso_country in(SELECT iso_country FROM airport WHERE name LIKE "Satsuma%");
+![img_22.png](img_22.png)
+
+### Tehtävä 2
+SELECT name FROM airport WHERE iso_country in(SELECT iso_country FROM country WHERE name= "Monaco");
+![img_23.png](img_23.png)
+
+### Tehtävä 3
+SELECT screen_name FROM game WHERE id IN (select game_id from goal_reached where goal_id in(SELECT id FROM goal WHERE name = "CLOUDS"));
+![img_24.png](img_24.png)
+
+### Tehtävä 4
+SELECT country.name FROM country WHERE iso_country NOT IN (SELECT airport.iso_country FROM airport);
+![img_25.png](img_25.png)
+
+### Tehtävä 5
+SELECT name FROM goal WHERE id NOT IN(SELECT goal.id FROM goal, goal_reached, game WHERE game.id = game_id and goal.id = goal_id AND screen_name = "Heini");
+![img_26.png](img_26.png)
+
+### Koostetieto kyselyt harjoitukset
+
+### Tehtävä 1
+SELECT max(elevation_ft) FROM airport;
+![img_27.png](img_27.png)
+
+### Tehtävä 2
+SELECT continent, count(*) FROM country GROUP BY continent;
+![img_28.png](img_28.png)
+
+### Tehtävä 3
+SELECT screen_name, count(*) FROM game, goal_reached WHERE id = game_id GROUP BY screen_name;
+![img_29.png](img_29.png)
+
+### Tehtävä 4
+SELECT screen_name FROM game WHERE co2_consumed in(SELECT min(co2_consumed)FROM GAME);
+![img_30.png](img_30.png)
+
+### Tehtävä 5
+SELECT country.name, count(*) FROM airport, country WHERE airport.iso_country = country.iso_country GROUP BY country.iso_country ORDER BY count(*) DESC limit 50;
+![img_31.png](img_31.png)
+
+### Tehtävä 6
+SELECT country.name FROM airport, country WHERE airport.iso_country = country.iso_country GROUP BY country.iso_country HAVING count(*) > 1000;
+![img_32.png](img_32.png)
+
