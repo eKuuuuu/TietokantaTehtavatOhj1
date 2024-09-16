@@ -165,3 +165,20 @@ SELECT count(*) FROM game, goal_reached WHERE id = game_id and SCREEN_name = "Ve
 SELECT name FROM airport WHERE latitude_deg in(SELECT min(latitude_deg) FROM airport);
 ![img_36.png](img_36.png)
 
+### Päivityskyselyt harjoitukset
+
+### Teht 1
+UPDATE game SET location = (SELECT ident FROM airport WHERE name = "Nottingham Airport"), co2_consumed = co2_consumed+500 WHERE screen_name = "Vesa";
+SELECT * FROM game;
+![img_37.png](img_37.png)
+
+### Teht 2
+### a. goal_reached
+
+### Teht 3
+DELETE FROM goal_reached;
+### Kuva puuttuu koska en halua rikkoa sql:ää vahinkossa
+
+### Teht 4
+DELETE from game;
+### Sama juttu mikä edellisessä
