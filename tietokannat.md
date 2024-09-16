@@ -78,3 +78,26 @@ SELECT name from airport, game where location = ident and screen_name = "Ilkka";
 ### Tehtävä 7
 select country.name from airport, game, country where location = ident and airport.iso_country = country.iso_country  and screen_name = "Ilkka";
 ![img_16.png](img_16.png)
+
+### Join osio
+
+### Tehtävä 1
+SELECT country.name AS "country name", airport.name AS "airport.name" FROM country inner JOIN airport ON airport.iso_country = country.iso_country WHERE country.name = "Finland" and scheduled_service = "yes";
+![img_17.png](img_17.png)
+
+### Tehtävä 2
+SELECT screen_name, airport.name FROM game inner JOIN airport on location = ident;
+![img_18.png](img_18.png)
+
+### Tehtävä 3
+SELECT screen_name, country.name FROM game inner JOIN airport on location = ident inner JOIN country ON airport.iso_country = country.iso_country;
+![img_19.png](img_19.png)
+
+### Tehtävä 4
+SELECT airport.name, screen_name FROM airport left JOIN game on ident = location where name like "%Hels%";
+![img_20.png](img_20.png)
+
+### Tehtävä 5
+SELECT name, screen_name FROM goal LEFT JOIN goal_reached ON goal.id = goal_id LEFT JOIN game ON game.id = game_id;
+![img_21.png](img_21.png)
+
